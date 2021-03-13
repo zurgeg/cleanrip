@@ -48,7 +48,9 @@
 #include <ogc/usbstorage.h>
 #include <sdcard/wiisd_io.h>
 #include <wiiuse/wpad.h>
+#ifndef NO_NTFS
 #include <ntfs.h>
+#endif
 #endif
 
 #ifdef HW_RVL
@@ -1030,7 +1032,18 @@ int dump_game(int disc_type, int type, int fs) {
 		if (fs == TYPE_FAT) {
 			opt_chunk_size = 4 * ONE_GIGABYTE - (opt_read_size>>11) - 1;
 		} else {
+			#ifndef NO_NTFS
 			opt_chunk_size = endLBA + (opt_read_size>>11);
+			#endif
+			#ifdef NO_NTFS
+			DrawFrameStart();
+			DrawEmptyBox(30, 180, vmode->fbWidth - 38, 350, COLOR_BLACK);
+			WriteCentre(230, "This build was not built with NTFS Support");
+			WriteCentre(255, "Exiting in 5 seconds");
+			DrawFrameFinish();
+			sleep(5);
+			exit(0);
+			#endif
 		}
 	} else {
 		opt_chunk_size = (chunk_size_wii + 1) * ONE_GIGABYTE;
