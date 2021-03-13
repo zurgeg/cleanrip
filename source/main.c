@@ -1160,10 +1160,6 @@ int dump_game(int disc_type, int type, int fs) {
 		}
 
 		check_exit_status();
-
-		if (get_buttons_pressed() & PAD_BUTTON_B) {
-			ret = -61;
-		}
 		// Update status every second
 		u64 curTime = gettime();
 		s32 timePassed = diff_msec(lastCheckedTime, curTime);
