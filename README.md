@@ -1,5 +1,5 @@
 # Introduction
-A tool to backup your Gamecube/Wii Discs via IOS58
+A tool to backup your Gamecube/Wii Discs via IOS58. Fork for if you have trolls in your house who like to cancel your dumps.
 Create 1:1 backups of your GC/Wii discs for archival purposes without any requirements for custom IOS (cIOS). Supports USB 2.0 / NTFS / FAT32 & Front SD.
 
 # Support
